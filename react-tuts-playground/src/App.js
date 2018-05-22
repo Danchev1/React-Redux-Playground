@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import logo from './assets/images/logo.svg'
 import './App.css'
+import Person from './Person/Person'
 
 class App extends Component {
   render() {
@@ -13,6 +14,16 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
+        <hr />
+        <Person name="Thanos" age="1000000">
+          My hobbies: finding stones, destroying people from frencheises
+        </Person>
+        <Person name="Hooker" age="17">
+          <span>My hobbies: the usual</span>
+        </Person>
+        <Person name="Nemo" age="6">
+          My hobies: swiming and being stupid
+        </Person>
       </div>
     )
 
