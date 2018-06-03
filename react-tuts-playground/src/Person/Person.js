@@ -2,17 +2,18 @@ import React from 'react'
 
 const person = props => {
   // your function will receive one object regardless - object with passed props
+  //  console.log(this);
   return (
     <div>
       <h4>
         This is a person component with some random number:
-        {Math.floor(Math.random() * 30)}
+        { Math.floor(Math.random() * 30) }
         <em> (functional component)</em>
       </h4>
-      <h1>
-        I am {props.name}, i am {props.age} years old.
+      <h1 onClick={ props.click }>
+        I am { props.name }, i am { props.age } years old.
       </h1>
-      <p>{props.children}</p>
+      <p>{ props.children }</p>
       <hr />
     </div>
   )
