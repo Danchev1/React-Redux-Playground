@@ -10,22 +10,22 @@ class App extends Component {
         { name: 'Hooker', age: 17 },
         { name: 'Nemo', age: 6 }
     ],
-    anotehrState: 'is I am'
+    anotherState: 'unused state'
   };
 
-  switchNameHandler = (newValue = 'default value') => {
+  switchNameHandler = (newValue) => {
     // console.log(this);
-    // DONT DO THIS this.state.persons[0].name = 'Other name';
+    // DON'T MUTATE DIRECTLY this.state.persons[0].name = 'Other name'; USE setState from Component library
     this.setState({
         persons: [
-            { name: 'else', age: 40 },
+            { name: 'MGK', age: 28 },
             { name: newValue, age: 25 },
-            { name: 'Nemo', age: 6 }
+            { name: 'EMINEM', age: 46 }
         ]
     })
   };
 
-  onNameChangeHandler = (event) => {
+  nameChangeHandler = (event) => {
       this.setState({
           persons: [
               { name: 'Mathew', age: 24 },
@@ -42,29 +42,28 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-          <button type="button" onClick={this.switchNameHandler.bind(this, 'Iron Man')}>Switch</button>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <button type="button" onClick={this.switchNameHandler.bind(this, 'Iron Man')}>Switch</button>
+        <p className="App-intro">To get started, edit <code>src/App.js</code> and save to reload.</p>
         <hr />
         <Person
             name={this.state.persons[0].name}
             age={this.state.persons[0].age}
-            // click={() => this.switchNameHandler('Iron Man III')}
-            changed={this.onNameChangeHandler}>
-          My hobbies: finding stones, destroying people from frencheises
+            click={() => this.switchNameHandler('Rakim')}
+            changed={this.nameChangeHandler}>
         </Person>
         <Person
             name={this.state.persons[1].name}
             age={this.state.persons[1].age}
-            click={() => this.switchNameHandler('Iron Man - anonymous') }>
+            click={() => this.switchNameHandler('Dr. Dre') }
+            changed={this.nameChangeHandler}>
           <span>My hobbies: the usual</span>
         </Person>
         <Person
             name={this.state.persons[2].name}
             age={this.state.persons[2].age}
-            click={() => this.switchNameHandler('Iron Man - anonymous II') }>
-          My hobies: swiming and being stupid
+            click={() => this.switchNameHandler('J.Cole') }
+            changed={this.nameChangeHandler}>
+            My hobies: swiming and being stupid
         </Person>
       </div>
     )
