@@ -6,24 +6,34 @@ import Person from './Person/Person'
 class App extends Component {
   state = {
     persons: [
-        { name: 'Thanos', age: 1000000 },
+        { name: '', age: 1000000 },
         { name: 'Hooker', age: 17 },
         { name: 'Nemo', age: 6 }
     ],
     anotehrState: 'is I am'
-  }
+  };
 
-  switchNameHandler = (newValue) => {
+  switchNameHandler = (newValue = 'default value') => {
     // console.log(this);
     // DONT DO THIS this.state.persons[0].name = 'Other name';
     this.setState({
         persons: [
-            { name: newValue, age: 40 },
-            { name: 'Old Hooker', age: 25 },
+            { name: 'else', age: 40 },
+            { name: newValue, age: 25 },
             { name: 'Nemo', age: 6 }
         ]
     })
-  }
+  };
+
+  onNameChangeHandler = (event) => {
+      this.setState({
+          persons: [
+              { name: 'Mathew', age: 24 },
+              { name: event.target.value, age: 57 },
+              { name: 'Dinamo', age: 13 }
+          ]
+      })
+  };
 
   render() {
     return (
@@ -40,7 +50,8 @@ class App extends Component {
         <Person
             name={this.state.persons[0].name}
             age={this.state.persons[0].age}
-            click={this.switchNameHandler.bind(this, 'Iron Man III')}>
+            // click={() => this.switchNameHandler('Iron Man III')}
+            changed={this.onNameChangeHandler}>
           My hobbies: finding stones, destroying people from frencheises
         </Person>
         <Person
