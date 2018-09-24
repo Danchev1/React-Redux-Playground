@@ -14,27 +14,18 @@ class App extends Component {
     showPersons: false
   };
 
-  // switchNameHandler = newValue => {
-  //   // console.log(this);
-  //   // DON'T MUTATE DIRECTLY this.state.persons[0].name = 'Other name'; USE setState from Component library
-  //   this.setState({
-  //       persons: [
-  //           { name: 'MGK', age: 28 },
-  //           { name: newValue, age: 25 },
-  //           { name: 'EMINEM', age: 46 }
-  //       ]
-  //   })
-  // };
-
-
   nameChangeHandler = (event, id) => {
-      this.setState({
-          persons: [
-              { name: 'Mathew', age: 24 },
-              { name: event.target.value, age: 57 },
-              { name: 'Dinamo', age: 13 }
-          ]
-      })
+      // const person = this.state.persons.find(); - other way of finding
+      const personIndex = this.state.persons.findIndex(item => {
+          return item.id === id;
+      });
+      // const person = Object.assign({}, this.state.persons[personIndex]); - other way of copying object
+      const person = {...this.state.persons[personIndex]};
+
+      person.name = event.target.value;
+      const persons = [...this.state.persons];
+      persons[personIndex] = person;
+      this.setState({persons: persons});
   };
 
   deletePersonHandler = (personIndex) => { // always update state in a immutable fashion - copy change set
