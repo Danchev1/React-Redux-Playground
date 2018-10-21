@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Radium, { StyleRoot } from 'radium'
 import logo from './assets/images/logo.svg'
 import './App.css'
 import Person from './Person/Person'
@@ -42,6 +43,21 @@ class App extends Component {
   };
 
   render() {
+    const btnStyle = {
+        width: '160px',
+        padding: '15px',
+        margin: '10px',
+        fontSize: '1.125rem',
+        border: 'none',
+        borderRadius: '2px',
+        backgroundColor: this.state.showPersons ? '#f44a41' : '#42f48f',
+        color: 'white',
+        cursor: 'pointer',
+        transition: 'background-color .15s ease',
+        ':hover': {
+            backgroundColor: '#77f499'
+        }
+    };
     let persons = null;
     if (this.state.showPersons) {
         persons = (
@@ -57,18 +73,24 @@ class App extends Component {
             </div>
         );
     }
-
+    let headingClasses = [];
+    if (this.state.persons.length <= 2) {
+        headingClasses.push('App-title', 'is-blue', 'is-bold');
+    }
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <button type="button" onClick={this.toggleHandler}>Toggle</button>
-        <p className="App-intro">To get started, edit <code>src/App.js</code> and save to reload.</p>
-        <hr />
-        {persons}
-      </div>
+        <StyleRoot>
+          <div className="App">
+            <header className="App-header">
+              <img src={logo} className="App-logo" alt="logo" />
+              <h1 className="App-title">Welcome to React</h1>
+              <h2 className={headingClasses.join(' ')}>Heading just for class test</h2>
+            </header>
+            <button type="button" style={btnStyle} onClick={this.toggleHandler}>Toggle</button>
+            <p className="App-intro">To get started, edit <code>src/App.js</code> and save to reload.</p>
+            <hr />
+            {persons}
+          </div>
+        </StyleRoot>
     )
 
     // JSX gets compiled to this
@@ -84,4 +106,4 @@ class App extends Component {
   }
 }
 
-export default App
+export default Radium(App)
