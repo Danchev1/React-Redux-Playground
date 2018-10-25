@@ -1,5 +1,5 @@
 import React from 'react'
-import './Person.css'
+import classes from './Person.css'
 
 const person = props => {
   // your function will receive one object regardless - object with passed props
@@ -9,7 +9,7 @@ const person = props => {
         marginBottom: '20px',
     };
     return (
-    <div className="Person" style={personStyle}>
+    <div className={classes.Person} style={personStyle}>
       <h4>This is a person component with some random number: {Math.floor(Math.random() * 30)} <em>(functional component)</em></h4>
       <h1>I am {props.name}, i am {props.age} years old.</h1>
       <hr />
