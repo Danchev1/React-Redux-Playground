@@ -1,5 +1,4 @@
 import React from 'react'
-import Radium from 'radium'
 import './Person.css'
 
 const person = props => {
@@ -8,9 +7,6 @@ const person = props => {
     const personStyle = {
         backgroundColor: '#f8f8f8',
         marginBottom: '20px',
-        '@media screen and (min-width: 500px)': {
-            width: '450px'
-        }
     };
     return (
     <div className="Person" style={personStyle}>
@@ -26,4 +22,4 @@ const person = props => {
   // props.children reserved world for passing content to child component like slots
 }; // we can execute only short and simple expression in the curly brackets in other words NO control flow
 
-export default Radium(person)
+export default person

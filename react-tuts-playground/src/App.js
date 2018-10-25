@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Radium, { StyleRoot } from 'radium'
 import logo from './assets/images/logo.svg'
 import './App.css'
 import Person from './Person/Person'
@@ -53,10 +52,7 @@ class App extends Component {
         backgroundColor: this.state.showPersons ? '#f44a41' : '#42f48f',
         color: 'white',
         cursor: 'pointer',
-        transition: 'background-color .15s ease',
-        ':hover': {
-            backgroundColor: '#77f499'
-        }
+        transition: 'background-color .15s ease'
     };
     let persons = null;
     if (this.state.showPersons) {
@@ -78,7 +74,6 @@ class App extends Component {
         headingClasses.push('App-title', 'is-blue', 'is-bold');
     }
     return (
-        <StyleRoot>
           <div className="App">
             <header className="App-header">
               <img src={logo} className="App-logo" alt="logo" />
@@ -90,7 +85,6 @@ class App extends Component {
             <hr />
             {persons}
           </div>
-        </StyleRoot>
     )
 
     // JSX gets compiled to this
@@ -106,4 +100,4 @@ class App extends Component {
   }
 }
 
-export default Radium(App)
+export default App
