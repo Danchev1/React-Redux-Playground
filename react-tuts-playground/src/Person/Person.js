@@ -8,6 +8,11 @@ const person = props => {
         backgroundColor: '#f8f8f8',
         marginBottom: '20px',
     };
+
+    // const random = Math.random();
+    // if(random > 0.7) {
+    //     throw new Error('Something went wrong'); // Simulating throw error probability
+    // }
     return (
     <div className={classes.Person} style={personStyle}>
       <h4>This is a person component with some random number: {Math.floor(Math.random() * 30)} <em>(functional component)</em></h4>

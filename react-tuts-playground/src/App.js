@@ -17,7 +17,7 @@ class App extends Component {
   nameChangeHandler = (event, id) => {
       // const person = this.state.persons.find(); - other way of finding
       const personIndex = this.state.persons.findIndex(item => {
-          return item.id === id;
+          return item.userId === id;
       });
       // const person = Object.assign({}, this.state.persons[personIndex]); - other way of copying object
       const person = {...this.state.persons[personIndex]};
