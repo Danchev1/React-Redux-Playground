@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import logo from './assets/images/logo.svg'
-import classes from './App.css'
-import Person from './Person/Person'
+import React, { Component } from 'react';
+import Header from './components/Header/Header';
+import PersonsList from './components/PersonsList/PersonsList';
+
 
 class App extends Component {
   state = {
@@ -17,7 +17,7 @@ class App extends Component {
   nameChangeHandler = (event, id) => {
       // const person = this.state.persons.find(); - other way of finding
       const personIndex = this.state.persons.findIndex(item => {
-          return item.userId === id;
+          return item.id === id;
       });
       // const person = Object.assign({}, this.state.persons[personIndex]); - other way of copying object
       const person = {...this.state.persons[personIndex]};
@@ -42,61 +42,28 @@ class App extends Component {
   };
 
   render() {
-    const btnStyle = {
-        width: '160px',
-        padding: '15px',
-        margin: '10px',
-        fontSize: '1.125rem',
-        border: 'none',
-        borderRadius: '2px',
-        backgroundColor: this.state.showPersons ? '#f44a41' : '#42f48f',
-        color: 'white',
-        cursor: 'pointer',
-        transition: 'background-color .15s ease'
-    };
-    let persons = null;
+    let personsList = null;
     if (this.state.showPersons) {
-        persons = (
+        personsList = (
             <div>
-                {this.state.persons.map((person, index) =>
-                    <Person
-                    name={person.name}
-                    age={person.age}
-                    click={() => this.deletePersonHandler(index)}
-                    changed={(event) => this.nameChangeHandler(event, person.id)}
-                    key={person.id}/>
-                )}
+                <PersonsList
+                persons={this.state.persons}
+                deletePersonHandler={this.deletePersonHandler}
+                nameChangeHandler={this.nameChangeHandler}/>
             </div>
         );
     }
-    let headingClasses = [];
-    if (this.state.persons.length <= 2) {
-        headingClasses.push(classes["App-title"], classes["is-blue"], classes["is-bold"]);
-    }
-    return (
-          <div className={classes.App}>
-            <header className={classes["App-header"]}>
-              <img src={logo} className={classes["App-logo"]} alt="logo" />
-              <h1 className={classes["App-title"]}>Welcome to React</h1>
-              <h2 className={headingClasses.join(' ')}>Heading just for class test</h2>
-            </header>
-            <button type="button" style={btnStyle} onClick={this.toggleHandler}>Toggle</button>
-            <p className={classes["App-intro"]}>To get started, edit <code>src/App.js</code> and save to reload.</p>
-            <hr />
-            {persons}
-          </div>
-    )
 
-    // JSX gets compiled to this
-    // return React.createElement(
-    //   'div',
-    //   { className: 'App' },
-    //   React.createElement(
-    //     'h1',
-    //     null,
-    //     'This is how you render and nest elements with JSX'
-    //   )
-    // )
+    return (
+      <div>
+        <Header
+        persons={this.state.persons}
+        showPersons={this.state.showPersons}
+        toggleHandler={this.toggleHandler}/>
+        <hr />
+        {personsList}
+      </div>
+    )
   }
 }
 
