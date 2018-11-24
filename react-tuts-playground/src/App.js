@@ -4,6 +4,11 @@ import PersonsList from './components/PersonsList/PersonsList';
 
 
 class App extends Component {
+    constructor(props) {
+        super(props);
+        console.log('[App.js] inside constructor and this is props = ', this);
+    };
+
   state = {
     persons: [
         { id: 1, name: '', age: 1000000 },
@@ -13,6 +18,9 @@ class App extends Component {
     anotherState: 'unused state',
     showPersons: false
   };
+
+  componentWillMount() {console.log('[App.js] inside componentWillMount()');};
+  componentDidMount() {console.log('[App.js] inside componentDidMount()');};
 
   nameChangeHandler = (event, id) => {
       // const person = this.state.persons.find(); - other way of finding
@@ -42,6 +50,7 @@ class App extends Component {
   };
 
   render() {
+    console.log('[App.js] inside render()');
     let personsList = null;
     if (this.state.showPersons) {
         personsList = (
@@ -60,7 +69,6 @@ class App extends Component {
         persons={this.state.persons}
         showPersons={this.state.showPersons}
         toggleHandler={this.toggleHandler}/>
-        <hr />
         {personsList}
       </div>
     )
