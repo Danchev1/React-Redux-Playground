@@ -19,8 +19,23 @@ class App extends Component {
     showPersons: false
   };
 
-  componentWillMount() {console.log('[App.js] inside componentWillMount()');};
-  componentDidMount() {console.log('[App.js] inside componentDidMount()');};
+  componentWillMount() { console.log('[App.js] inside componentWillMount()'); };
+  componentDidMount() { console.log('[App.js] inside componentDidMount()'); };
+
+  componentWillReceiveProps(nextProps) {
+    console.log('[UPDATE App.js] inside componentWillReceiveProps()', nextProps);
+  }
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('[UPDATE App.js] inside shouldComponentUpdate()', nextProps, nextState);
+    return true;
+  }
+  componentWillUpdate(nextProps, nextState) {
+    console.log('[UPDATE App.js] inside componentWillUpdate()', nextProps, nextState);
+  }
+
+  componentDidUpdate() {
+    console.log('[UPDATE App.js] inside componentDidUpdate()');
+  }
 
   nameChangeHandler = (event, id) => {
       // const person = this.state.persons.find(); - other way of finding
