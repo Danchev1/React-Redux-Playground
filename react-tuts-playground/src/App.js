@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from './components/Header/Header';
 import PersonsList from './components/PersonsList/PersonsList';
+import Aux from './HOC/Aux';
 
 class App extends Component {
   constructor(props) {
@@ -76,23 +77,21 @@ class App extends Component {
     let personsList = null;
     if (this.state.showPersons) {
       personsList = (
-          <div>
             <PersonsList
                 persons={this.state.persons}
                 deletePersonHandler={this.deletePersonHandler}
                 nameChangeHandler={this.nameChangeHandler}/>
-          </div>
       );
     }
 
     return (
-        <div>
+        <Aux>
           <Header
               persons={this.state.persons}
               showPersons={this.state.showPersons}
               toggleHandler={this.toggleHandler}/>
           {personsList}
-        </div>
+        </Aux>
     )
   }
 }
