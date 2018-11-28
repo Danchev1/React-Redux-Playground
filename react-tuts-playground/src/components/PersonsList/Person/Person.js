@@ -1,8 +1,10 @@
 import React from 'react';
 import classes from './Person.css';
+import Aux from '../../../HOC/Aux';
+import hocWithClass from '../../../HOC/hocWithClass';
 
 const person = props => (
-    <div className={classes.Person}>
+    <Aux>
       <h4>
           This is a person component with some random number: {Math.floor(Math.random() * 30)}
           <em>(functional component)</em>
@@ -13,7 +15,7 @@ const person = props => (
       {props.children ? <p>{props.children}</p> : false}
       <hr />
       <input type="text" onChange={props.changed} value={props.name}/>
-    </div>
+    </Aux>
 );
 
-export default person
+export default hocWithClass(person, classes.Person);

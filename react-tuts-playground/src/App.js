@@ -77,19 +77,17 @@ class App extends Component {
     let personsList = null;
     if (this.state.showPersons) {
       personsList = (
-            <PersonsList
-                persons={this.state.persons}
-                deletePersonHandler={this.deletePersonHandler}
-                nameChangeHandler={this.nameChangeHandler}/>
+          <PersonsList persons={this.state.persons}
+                       deletePersonHandler={this.deletePersonHandler}
+                       nameChangeHandler={this.nameChangeHandler}/>
       );
     }
 
     return (
         <Aux>
-          <Header
-              persons={this.state.persons}
-              showPersons={this.state.showPersons}
-              toggleHandler={this.toggleHandler}/>
+          <Header persons={this.state.persons}
+                  showPersons={this.state.showPersons}
+                  toggleHandler={this.toggleHandler}/>
           {personsList}
         </Aux>
     )
