@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Person from "./Person/Person";
+import PropTypes from 'prop-types';
 
 class PersonsList extends Component {
   constructor(props) {
@@ -40,5 +41,11 @@ class PersonsList extends Component {
     )
   }
 }
+
+PersonsList.propTypes = {
+  persons: PropTypes.array,
+  deletePersonHandler: PropTypes.func,
+  nameChangeHandler: PropTypes.func
+};
 
 export default PersonsList;
