@@ -13,6 +13,7 @@ const header = props => {
 
     return (
     <header>
+        <button onClick={props.loginState}>Login</button>
         <img src={logo} className={classes["logo"]} alt="logo" />
         <h1 className={classes["Header-title"]}>Welcome to React</h1>
         <h2 className={headingClasses.join(' ')}>Heading just for class test</h2>

@@ -16,10 +16,12 @@ class PersonsList extends Component {
     console.log('[UPDATE PersonsList.js] inside componentWillReceiveProps()', nextProps);
   }
 
+/*
   shouldComponentUpdate(nextProps, nextState) {
     console.log('[UPDATE PersonsList.js] inside shouldComponentUpdate()', nextProps, nextState);
     return nextProps.persons !== this.props.persons;
   }
+*/
 
   componentWillUpdate(nextProps, nextState) {
     console.log('[UPDATE PersonsList.js] inside componentWillUpdate()', nextProps, nextState);

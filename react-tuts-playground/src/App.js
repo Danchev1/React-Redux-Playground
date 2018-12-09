@@ -3,6 +3,8 @@ import Header from './components/Header/Header';
 import PersonsList from './components/PersonsList/PersonsList';
 import Aux from './HOC/Aux';
 
+export const AuthenticationContext = React.createContext(false);
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -16,7 +18,8 @@ class App extends Component {
       { id: 3, name: 'Nemo', age: 6 }
     ],
     anotherState: 'unused state',
-    showPersons: false
+    showPersons: false,
+    authenticated: false
   };
 
   componentWillMount() {
@@ -72,14 +75,19 @@ class App extends Component {
     this.setState({ showPersons: !show });
   };
 
+  loginHandler = () => {
+    const auth = this.state.authenticated;
+    this.setState({ authenticated: !auth})
+  };
   render() {
     console.log('[App.js] inside render()');
     let personsList = null;
     if (this.state.showPersons) {
       personsList = (
-          <PersonsList persons={this.state.persons}
-                       deletePersonHandler={this.deletePersonHandler}
-                       nameChangeHandler={this.nameChangeHandler}/>
+          <PersonsList
+              persons={this.state.persons}
+              deletePersonHandler={this.deletePersonHandler}
+              nameChangeHandler={this.nameChangeHandler}/>
       );
     }
 
@@ -87,8 +95,12 @@ class App extends Component {
         <Aux>
           <Header persons={this.state.persons}
                   showPersons={this.state.showPersons}
+                  loginState={this.loginHandler}
                   toggleHandler={this.toggleHandler}/>
-          {personsList}
+
+          <AuthenticationContext.Provider value={this.state.authenticated}>
+            {personsList}
+          </AuthenticationContext.Provider>
         </Aux>
     )
   }
